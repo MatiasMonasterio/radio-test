@@ -8,12 +8,12 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
     <link rel="stylesheet" href="style.css">
 </head>
-<body>
+<body id="body">
     <div class="background"></div>  <!-- BACKGROUND -->
     <div class="main-container" id="mainContainer">
         <div class="dj-info"></div>
         <div class="audio">
-            <button class="audio-button">
+            <button class="audio-button" id="radioButton">
                 <svg width="104" height="104" id='pause' class="audio-svg">
                     <line id='line1' x1="38" y1="30" x2="38" y2="70" style="stroke-width:4px;stroke:#f1f1f1;stroke-linecap: round;" />
                     <path id='line2' d="M 38 30 L 70 50 L 38 70" rx="10" ry="10" style="stroke-width:4px;stroke:#f1f1f1;fill:#f1f1f1;stroke-linejoin: round;stroke-linecap: round;">
@@ -68,14 +68,23 @@
 
             </div>  <!-- CHAT CONTAINER MESSAGE -->
         </div>  <!-- CHAT -->
+
+        <div class="loading" id="loading">
+            <p>loading...</p>
+        </div>
     </div>  <!-- MAIN CONTAINER -->
 
+
+    <!-- LISTEN 2 MY RADIO  -->
+    <audio id="radio" class="radio" src="https://freeuk12.listen2myradio.com/live.mp3?typeportmount=ice_20862_stream_213244051" preload="none" controls></audio>
 
     <!-- FIREBASE DEPENDENCES SCRIPT -->
     <script src="https://www.gstatic.com/firebasejs/7.15.1/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/7.15.1/firebase-database.js"></script>
-    <script src="firebase.js" type="module"></script>
 
+
+    <script src="firebase.js" type="module"></script>
     <script src="app.js" type="module"></script>
+    <script src="audio.js"></script>
 </body>
 </html>

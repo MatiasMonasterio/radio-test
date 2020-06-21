@@ -9,7 +9,8 @@
   font-size: 14px; }
 
 body {
-  font-family: 'Poppins', sans-serif; }
+  font-family: 'Poppins', sans-serif;
+  background-color: #000000; }
 
 button {
   background-color: transparent;
@@ -184,3 +185,29 @@ input:focus-within {
     opacity: 1;
     transform: translateY(0);
     visibility: visible; }
+
+.radio {
+  display: none; }
+
+.background,
+.dj-info,
+.chat {
+  opacity: 0;
+  transition: opacity 2s;
+  visibility: hidden; }
+
+.played .background,
+.played .dj-info,
+.played .chat {
+  visibility: visible;
+  opacity: 1; }
+
+.audio-svg {
+  outline: none; }
+
+.loading {
+  position: absolute;
+  bottom: 50px;
+  display: none; }
+  .loading-show {
+    display: initial; }
