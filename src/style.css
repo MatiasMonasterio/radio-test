@@ -44,12 +44,52 @@ input:focus-within {
   color: var(--fuente);
   overflow: hidden; }
 
-.dj-info {
+.artist {
   position: absolute;
   top: 0;
   padding-top: 40px;
   display: block;
-  width: 100%; }
+  width: 100%;
+  height: 64px; }
+  .artist-name {
+    display: flex;
+    justify-content: center; }
+    .artist-name p {
+      font-size: 1.1rem; }
+    .artist-name button {
+      color: var(--fuente);
+      padding: 0 11px;
+      font-size: 1.1rem;
+      transition: transform .2s; }
+  .artist-info {
+    width: 82vw;
+    height: 100%;
+    margin: 0 auto;
+    margin-top: 20vh;
+    display: flex;
+    visibility: hidden;
+    flex-direction: column;
+    align-items: center; }
+    @media (min-width: 767px) {
+      .artist-info {
+        width: 50vw;
+        max-width: 600px; } }
+  .artist-image {
+    width: 80%;
+    margin-bottom: 15px; }
+  .artist-description {
+    text-align: center;
+    font-size: .9rem;
+    margin-bottom: 10px; }
+  .artist-genre {
+    font-size: .9rem;
+    margin-bottom: 25px; }
+    .artist-genre span {
+      color: #808080; }
+  .artist-social-link i {
+    color: var(--fuente);
+    font-size: 1.4rem;
+    padding: 0 4px; }
 
 .chat {
   position: absolute;
@@ -127,14 +167,20 @@ input:focus-within {
       color: var(--fuente);
       font-size: 1rem;
       padding-left: 10px; }
+  @media (min-width: 767px) {
+    .message {
+      width: 30%; } }
 
-.chat-open .dj-info,
+.chat-open .artist,
 .chat-open .audio {
-  visibility: hidden; }
+  visibility: hidden !important; }
 
 .chat-open .chat {
   height: 100vh;
   background-color: rgba(0, 0, 0, 0.6); }
+  @media (min-width: 767px) {
+    .chat-open .chat {
+      background-color: transparent; } }
 
 .chat-open .chat-button-open {
   display: none; }
@@ -190,14 +236,14 @@ input:focus-within {
   display: none; }
 
 .background,
-.dj-info,
+.artist,
 .chat {
   opacity: 0;
-  transition: opacity 2s;
+  transition: opacity .1s;
   visibility: hidden; }
 
 .played .background,
-.played .dj-info,
+.played .artist,
 .played .chat {
   visibility: visible;
   opacity: 1; }
@@ -211,3 +257,15 @@ input:focus-within {
   display: none; }
   .loading-show {
     display: initial; }
+
+.artist-show .audio,
+.artist-show .chat {
+  visibility: hidden; }
+
+.artist-show .artist {
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.6); }
+  .artist-show .artist-name button {
+    transform: rotate(-180deg); }
+  .artist-show .artist-info {
+    visibility: visible; }

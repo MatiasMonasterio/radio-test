@@ -85,3 +85,9 @@ const creatDom = ( author, message ) => {
 
 export{ creatDom }
 
+
+// EVENTOS PARA ARTIST
+artistButton.addEventListener( 'click', () => {
+    body.classList.toggle('artist-show');
+})
+
