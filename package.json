@@ -5,11 +5,13 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "sass": "node-sass src/style.scss src/style.css -w"
+    "sass": "node-sass src/style.scss src/style.css -w",
+    "dev": "live-server src/"
   },
   "author": "MatiasMonasterio",
   "license": "ISC",
   "devDependencies": {
+    "live-server": "^1.2.1",
     "node-sass": "^4.14.1"
   }
 }
