@@ -1,93 +1,118 @@
 import { saveMessage } from './firebase.js';
 
+// CLASES
+class Messsage {
+    constructor( author, content ) {
+        if( author === null ) return CHAT.openPopUpName();
+        if( content === '' ) return false;
+
+        this.author = author;
+        this.content = content;        
+    }
+
+    sendMessage(){
+        saveMessage( this.author, this.content );
+    }
+
+    printMessage(){
+        CHAT.buildChatList( this.author, this.content );
+    }
+}
+
+class Chat {
+    openChat(){
+        mainContainer.classList.add('chat-open');
+        this.scrollDown();
+    }
+
+    closeChat(){
+        mainContainer.classList.remove('chat-open');
+    }
+
+    openPopUpName(){
+        popup.classList.add('popup-show');
+        inputName.focus();
+    }
+
+    closePopupName(){
+        popup.classList.remove('popup-show');
+        inputMessage.focus();
+    }
+
+    buildChatList( author, content ){
+        let lastMessage = messageList.lastElementChild.firstElementChild.innerHTML;
+
+        const item = document.createElement('li');
+        if( localStorage.getItem('name') === author ) item.className = 'message-item right';
+        else item.className = 'message-item';
+
+        const name = document.createElement('span');
+        if( lastMessage === author ) name.className = 'message-author-none';
+        else name.className = 'message-author';
+
+        const text = document.createElement('p');
+        text.className = 'message-text';
+
+        name.innerHTML = author;
+        text.innerHTML = content;
+
+        item.appendChild(name);
+        item.appendChild(text);
+        messageList.appendChild( item );
+
+        this.scrollDown();
+    }
+
+    scrollDown(){
+        messageList.scrollTop = messageList.scrollHeight;
+    }
+}
+
+// DEFINICION DE VARIABLES Y CONSTANTES GLOBALES
 let userName = localStorage.getItem('name');
+const CHAT = new Chat; // CREO QUE USAR UNA CLASE NO ES NECESARIO YA QUE NO VOY A DEFINIRLO MAS DE UNA VEZ JAMAS PERO HACE REFERENCIA A LOS METODOS
 
 
-// EVENTOS
-openChat.addEventListener('click', () => {
-    mainContainer.classList.add('chat-open');
-    scrollDownChat();
+// EVENTOS DOM
+chat.addEventListener('click', (e) => {
+    if( e.target.name === 'open chat' || e.target.classList.contains('fa-comment-alt') ) CHAT.openChat(); // ESTOY TAMBIEN NO SE SI ME CONVIENE HACERLO ASI
+    else if( e.target.name === 'close chat' || e.target.classList.contains('fa-chevron-right') ) CHAT.closeChat(); // LO MISMO ACA
 });
 
-closeChat.addEventListener('click', () => {
-    mainContainer.classList.remove('chat-open');
-});
-
-sendMessage.addEventListener('submit', (e) => {
+messageForm.addEventListener('submit', (e) => {
     e.preventDefault();
 
-    if( inputMessage.value === '' ) return
-    
-    // Validaciones del nombre de usuario ( ES NECESARIO PORNERLO EN UNA FUNCION APARTE? )
-    if( userName === null ) {
-       togglePopUp();
-       inputName.focus();
-        return;
-    };
-    
-    saveMessage( userName, inputMessage.value );
-    inputMessage.value = '';
+    const MESSAGE = new Messsage( userName, inputMessage.value );
+    if ( !MESSAGE.author ) return;
+    MESSAGE.sendMessage();
+
+    messageForm.reset();
     inputMessage.focus();
 });
 
-sendName.addEventListener('submit', (e) => {
+nameForm.addEventListener('submit', (e) => {
     e.preventDefault();
 
-    let saveName = inputName.value;
-    
-    if( saveName === '' ) return
+    const USER = inputName.value;
+    if( USER === '' ) return
+    saveUserLocalStorage( USER );
 
-    localStorage.setItem( 'name', saveName );
-    userName = localStorage.getItem('name');
-    
-    inputMessage.focus();
-    togglePopUp();
+    CHAT.closePopupName();
 });
 
-window.addEventListener('resize', () => {
-    scrollDownChat();
-});
+window.addEventListener('resize', CHAT.scrollDown );
+
 
 // FUNCIONES
-function togglePopUp(){
-    popup.classList.toggle('popup-show');
+function saveUserLocalStorage( user ){
+    localStorage.setItem('name', user );
+    userName = userName = localStorage.getItem('name');
 }
 
-function scrollDownChat(){
-    messageList.scrollTop = messageList.scrollHeight;
-}
-
-
-// FUNCIONES EXPORTADAS
-const creatDom = ( author, message ) => {
-    let lastMessage = messageList.lastElementChild.firstElementChild.innerHTML;
-    
-    let item = document.createElement('li');
-    if( localStorage.getItem('name') === author ) item.className = 'message-item right';
-    else item.className = 'message-item';
-
-    let name = document.createElement('span');
-    if( lastMessage === author ) name.className = 'message-author-none';
-    else name.className = 'message-author';
-
-    let text = document.createElement('p');
-    text.className = 'message-text';
-
-    name.innerHTML = author;
-    text.innerHTML = message;
-
-    item.appendChild(name);
-    item.appendChild(text);
-    messageList.appendChild( item );
-
-    scrollDownChat();
-}
-
-export{ creatDom }
+// EXPORTS
+export{ Messsage }
 
 
 // EVENTOS PARA ARTIST
-artistButton.addEventListener( 'click', () => {
-    body.classList.toggle('artist-show');
-})
+artistButton.addEventListener( 'click', () => body.classList.toggle('artist-show') )
 

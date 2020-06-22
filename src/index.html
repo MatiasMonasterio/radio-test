@@ -69,23 +69,23 @@
             </button>
         </div>  <!-- AUDIO -->
         <div class="chat" id="chat">
-            <button class="chat-button-open" id="openChat"><i class="far fa-comment-alt"></i></button>
+            <button class="chat-button-open" id="openChat" name="open chat"><i class="far fa-comment-alt"></i></button>
             <div class="chat-container message">
                 <div class="message-button-container">
-                    <button class="message-button-close" id="closeChat"><i class="fas fa-chevron-right"></i></button>
+                    <button class="message-button-close" id="closeChat" name="close chat"><i class="fas fa-chevron-right"></i></button>
                 </div>  <!-- BUTTON CONTAINER -->
 
                 <ul class="message-list" id="messageList">
                     <li class="message-item"><span></span><p></p></li>
                 </ul>
-                <form class="message-form" id="sendMessage">
+                <form class="message-form" id="messageForm">
                     <input type="text" autocomplete="off" id="inputMessage">
                     <button type="submit">Send</button>
                 </form>
 
                 <div class="popup" id="popup">
                     <p class="popup-text">Necesita un nombre</p>
-                    <form class="popup-form" id="sendName">
+                    <form class="popup-form" id="nameForm">
                         <input type="text" id="inputName" autocomplete="off">
                         <button type="submit">OK</button>
                     </form>
