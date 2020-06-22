@@ -1,0 +1,17 @@
+{
+  "name": "Radio Test",
+  "short_name": "Radio Test",
+  "icons": [{
+    "src": "/assets/image/monkey.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    }, {
+      "src": "/assets/image/monkey.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }],
+  "start_url": "/index.html",
+  "display": "standalone",
+  "background_color": "#f8f8f8",
+  "theme_color": "#f8f8f8"
+}

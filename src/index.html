@@ -3,6 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- PWA -->
+    <meta name="theme-color" content="#202124">
+    <link rel="manifest" href="/manifest.json">
+    <link rel="apple-touch-icon" href="./assets/image/monkey.png">
+
     <title>Radio Test</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
@@ -71,10 +76,6 @@
                 </div>  <!-- BUTTON CONTAINER -->
 
                 <ul class="message-list" id="messageList">
-                    <li class="message-item">
-                        <span class="message-author">Matias Monasterio</span>
-                        <p class="message-text">Mensaje de prueba</p>
-                    </li>
                 </ul>
                 <form class="message-form" id="sendMessage">
                     <input type="text" autocomplete="off" id="inputMessage">
@@ -107,6 +108,7 @@
 
 
     <script src="firebase.js" type="module"></script>
+    <script type="module" src="pwabuilder-sw.js"></script>
     <script src="app.js" type="module"></script>
     <script src="audio.js"></script>
 </body>
