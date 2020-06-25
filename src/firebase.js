@@ -1,4 +1,4 @@
-import { Messsage } from './app.js';
+import { ChatUI } from './js/chatUI.js';
 
 // FIREBASE
 // Your web app's Firebase configuration
@@ -14,8 +14,7 @@ var firebaseConfig = {
 };
 firebase.initializeApp(firebaseConfig);
 
-
-const saveMessage = function ( author, content ){
+export const saveMessage = function ( author, content ){
     firebase.database().ref('chat').push({
         name: author, 
         content: content 
@@ -25,9 +24,6 @@ const saveMessage = function ( author, content ){
 // Listener para Firebase cuando se agrega un nuevo elemento 
 firebase.database().ref('chat')
     .on( 'child_added', ( snapshoot ) => {
-        const message = new Messsage( snapshoot.toJSON().name, snapshoot.toJSON().content );
-        message.printMessage();
+        const chatUI = new ChatUI;
+        chatUI.buildChatItem( snapshoot.toJSON().name, snapshoot.toJSON().content )
     });
-
-
-export { saveMessage };
