@@ -3,32 +3,38 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- PWA -->
+    <title>Inside</title>
+    
+    <!-- PWA APLICATION DEPENDENCES -->
     <meta name="theme-color" content="#202124">
     <link rel="manifest" href="/manifest.json">
     <link rel="apple-touch-icon" href="./assets/image/monkey.png">
 
-    <title>Radio Test</title>
+    <!-- GOOGLE FONT -->
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <!-- FONT AWESOME V5.8.2 -->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
+    <!-- STYLE SHEET CSS -->
     <link rel="stylesheet" href="style.css">
+
 </head>
 <body id="body">
     <div class="background"></div>  <!-- BACKGROUND -->
     <div class="main-container" id="mainContainer">
+
+
+
         <div class="artist">
             <div class="artist-name">
                 <p>BLACK MONKEYS</p>
                 <button id="artistButton"><i class="fas fa-angle-down"></i></button>
             </div>  <!-- ARTIST NAME -->
-
             <div class="artist-info">
                 <img src="./assets/image/artista-image.png" alt="artista" class="artist-image">
                 <p class="artist-description">
                     Lorem ipsum dolor sit amet consectetur adipisicing elit. Ducimus quaerat dolorum harum
                 </p>
                 <p class="artist-genre"><span>Género: </span>Techno</p>
-
                 <div class="artist-social">
                     <a href="https://www.facebook.com/matias.m.monasterio/" target="_blank" rel="noopener noreferrer nofollow" class="artist-social-link"><i class="fab fa-facebook-square"></i></a>
                     <a href="https://www.instagram.com/matiasmonas/" target="_blank" rel="noopener noreferrer nofollow" class="artist-social-link"><i class="fab fa-instagram"></i></a>
@@ -36,10 +42,11 @@
                     <a href="https://www.mixcloud.com/matias-m-monasterio/" target="_blank" rel="noopener noreferrer nofollow" class="artist-social-link"><i class="fab fa-mixcloud"></i></a>
                     <a href="https://www.youtube.com/channel/UCEK6kiMqrSp6uSdwYMffUzQ?view_as=subscriber" target="_black" rel="noopener noreferrer nofollow" class="artist-social-link"><i class="fab fa-youtube"></i></a>
                 </div><!-- ARTIST SOCIAL -->
-
             </div>  <!-- ARTIST INFO -->
+        </div>  <!-- ARTIST -->
 
-        </div>  <!-- ARTIST INFO -->
+
+
         <div class="audio">
             <button class="audio-button" id="radioButton">
                 <svg width="104" height="104" id='pause' class="audio-svg">
@@ -68,13 +75,15 @@
                 </svg>
             </button>
         </div>  <!-- AUDIO -->
-        <div class="chat" id="chat">
+
+
+
+        <div class="chat" id="chatElement">
             <button class="chat-button-open" id="openChat" name="open chat"><i class="far fa-comment-alt"></i></button>
             <div class="chat-container message">
                 <div class="message-button-container">
                     <button class="message-button-close" id="closeChat" name="close chat"><i class="fas fa-chevron-right"></i></button>
                 </div>  <!-- BUTTON CONTAINER -->
-
                 <ul class="message-list" id="messageList">
                     <li class="message-item"><span></span><p></p></li>
                 </ul>
@@ -82,7 +91,6 @@
                     <input type="text" autocomplete="off" id="inputMessage">
                     <button type="submit">Send</button>
                 </form>
-
                 <div class="popup" id="popup">
                     <p class="popup-text">Necesita un nombre</p>
                     <form class="popup-form" id="nameForm">
@@ -90,27 +98,29 @@
                         <button type="submit">OK</button>
                     </form>
                 </div>  <!-- POPUP -->
-
             </div>  <!-- CHAT CONTAINER MESSAGE -->
         </div>  <!-- CHAT -->
 
+
+
         <div class="loading" id="loading">
-            <p>loading...</p>
+            <p>Loading...</p>
         </div>  <!-- LOADING -->
+
+
+
     </div>  <!-- MAIN CONTAINER -->
 
 
-    <!-- LISTEN 2 MY RADIO  -->
-    <audio id="radio" class="radio" src="https://freeuk12.listen2myradio.com/live.mp3?typeportmount=ice_20862_stream_213244051" preload="none" controls></audio>
+    <!-- LISTEN 2 MY RADIO -->
+    <audio id="radio" class="radio" src="https://freeuk12.listen2myradio.com/live.mp3?typeportmount=ice_20862_stream_213244051" preload="none"></audio>
 
     <!-- FIREBASE DEPENDENCES SCRIPT -->
     <script src="https://www.gstatic.com/firebasejs/7.15.1/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/7.15.1/firebase-database.js"></script>
 
-
     <script src="firebase.js" type="module"></script>
-    <script type="module" src="pwabuilder-sw.js"></script>
+    <script src="pwabuilder-sw.js"></script>
     <script src="app.js" type="module"></script>
-    <script src="audio.js"></script>
 </body>
 </html>
