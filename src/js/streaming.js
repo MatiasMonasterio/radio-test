@@ -1,5 +1,10 @@
 export class Streaming{
-    
+
+    reloadStreaming(){
+        radio.load();
+        radio.play();
+    }
+
     async playStreaming(){
         loading.classList.add('loading-show');
         radioButton.disabled = true;
@@ -25,11 +30,12 @@ export class Streaming{
         body.classList.remove('played');
         from_pause_to_play.beginElement();
     
-        if( radio.duration !== Infinity && !isNaN(radio.duration)) this.reloadStreaming();
+        if( radio.duration !== Infinity && !isNaN(radio.duration)) {
+            // this.reloadStreaming();
+            // Mejorar contexto
+            radio.load();
+            radio.play();
+        }
     }
 
-    reloadStreaming(){
-        radio.load();
-        radio.play();
-    }
 }
